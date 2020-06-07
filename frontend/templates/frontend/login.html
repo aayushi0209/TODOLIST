@@ -1,0 +1,24 @@
+{% extends  'frontend/basic1.html' %}
+{% block body%}
+<form action="/login1/"  method="post">{% csrf_token %}
+		<div class="form1">
+
+				<h3 class="my-2">Login</h3>
+			<hr>
+                  <input type="text" id="text" required name="name1">
+				<label for ="text" class="labelText">
+					<span class="contentText" >Name</span>
+				</label>
+
+				 <input type="password" id="pass" required name="password">
+				<label for ="pass" class="labelPass">
+					<span class="contentPass" >Password</span>
+				</label>
+				<button class="btn">
+					<span>Submit</span>
+				</button>
+
+			<a class="m-2" href="/register">Don't have an account ?? Register</a>
+		</div>
+	</form>
+{% endblock %}

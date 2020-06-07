@@ -1,0 +1,32 @@
+{% extends  'frontend/basic1.html' %}
+{% block body%}
+<form action="/register/" method="post">{% csrf_token %}
+		<div class="form1">
+
+				<h3 class="my-2">Register</h3>
+			<hr>
+					{{form.username}}
+				<label for ="text" class="labelText">
+					<span class="contentText" >{{form.username.label}}</span>
+				</label>
+
+					{{form.password1}}
+				<label for ="pass" class="labelPass">
+					<span class="contentPass">{{form.password1.label}}</span>
+				</label>
+
+					{{form.password2}}
+				<label for ="pass" class="labelPass">
+					<span class="contentPass">{{form.password2.label}}</span>
+				</label>
+				<button class="btn">
+					<span>Submit</span>
+				</button>
+
+				{{form.errors}}
+            <a  class="text-center m-2" href="/">  Have an account?? Login</a>
+
+</div>
+	</form>
+
+{% endblock %}

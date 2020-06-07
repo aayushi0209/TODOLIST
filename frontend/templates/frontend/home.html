@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<header>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top shadow p-3 mb-5 bg-dark">
+		<div class="container">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">TODO LIST
+  			</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+<ul class="navbar-nav ml-auto" >
+     <li class="nav-item ">
+<form  action="/list/" method="post">{% csrf_token %}      <button class="nav-link btn btn-black ">Add Item</button></form>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="/logoutuser">Logout</a>
+    </li>
+
+  </ul>
+</div>
+</div>
+</nav>
+</header>
+<div class="container my-5 pt-5">
+    <form action="/home" method="get">
+        <div class="row">
+
+            <div class="col-3">
+                  <label><h4>Label</h4></label>
+                        <select class="form-control " name="label" >
+                            <option>Personal</option>
+                            <option>Work</option>
+                            <option>Shopping</option>
+                            <option>Other</option>
+                        </select>
+            </div>
+            <div class="col-3">
+                 <label><h4>Status</h4></label>
+                    <select class="form-control  "  name="status" >
+                        <option>New</option>
+                        <option>In-Progress</option>
+                        <option>Completed</option>
+                    </select>
+
+            </div>
+            <div class="col-3">
+                 <label><h4>Priority</h4></label>
+                    <select class="form-control  "  name="priority" >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+
+                    </select>
+
+            </div>
+             <div class="col-3">
+                <label><h4>Date</h4></label><br>
+                <input type="date" class="form-control" name="date1"  value="2020-05-18">
+            </div>
+    </div>
+                <input type="submit" class="btn btn-dark m-2  " value="Apply Filters">
+
+    </form>
+    <form action="/home/" method="get">
+            <div class="row">
+                <div class="col-6">
+                 <select class="form-control" name="sortacc">
+                     <option>Labels</option>
+                     <option>Status</option>
+                     <option>Priority</option>
+                     <option>Date</option>
+                </select>
+            </div>
+               <div class="col-6">
+                            <input type="submit" class="btn btn-dark w-25  " value="Sort">
+           </div>
+        </div>
+
+
+    </form>
+    <form METHOD="post" action="/home/" METHOD="post"> {% csrf_token %}<input type="submit" class="btn btn-dark m-2 " value="Remove Filters"></form>
+</div>
+
+
+<!--*********************************************************************************************-->
+    <!--    Display  Data-->
+    <div class="container my-5 ">
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task</th>
+      <th scope="col">Date</th>
+      <th scope="col">Label</th>
+      <th scope="col">Status</th>
+      <th scope="col">Priority</th>
+<!--        <th scope="col">Delete</th>-->
+    </tr>
+  </thead>
+  <tbody>
+        {% for i in allData %}
+    <tr>
+      <th scope="row">{{ i.task_id}}</th>
+<!--      <td>{{ i.task_id}}</td>-->
+      <td>{{ i.task }}</td>
+      <td>{{ i.date1 }}</td>
+       <td>{{ i.labels }}</td>
+       <td>{{ i.status }}</td>
+        <td>{{ i.priority }}</td>
+<!--        <td><button style="background-color=red, color=white">Delete</button> </td>-->
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+    </div>
+
+</body>
+</html>
